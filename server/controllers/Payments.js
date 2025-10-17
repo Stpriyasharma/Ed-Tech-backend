@@ -34,10 +34,9 @@ exports.capturePayment = async (req, res) => {
           .status(200)
           .json({ success: false, message: "Could not find the Course" });
       }
-
       // Check if the user is already enrolled in the course
       const uid = new mongoose.Types.ObjectId(userId);
-      if (course.studentsEnroled.includes(uid)) {
+      if (course.studentsEnrolled.includes(uid)) {
         return res
           .status(200)
           .json({ success: false, message: "Student is already Enrolled" });
@@ -50,13 +49,11 @@ exports.capturePayment = async (req, res) => {
       return res.status(500).json({ success: false, message: error.message });
     }
   }
-
   const options = {
     amount: total_amount * 100,
     currency: "INR",
     receipt: Math.random(Date.now()).toString(),
   };
-
   try {
     // Initiate the payment using Razorpay
     const paymentResponse = await instance.orders.create(options);
@@ -74,13 +71,14 @@ exports.capturePayment = async (req, res) => {
 
 // verify the payment
 exports.verifyPayment = async (req, res) => {
+  console.log("payment5");
   const razorpay_order_id = req.body?.razorpay_order_id;
   const razorpay_payment_id = req.body?.razorpay_payment_id;
   const razorpay_signature = req.body?.razorpay_signature;
   const courses = req.body?.courses;
 
   const userId = req.user.id;
-
+  console.log("payment6");
   if (
     !razorpay_order_id ||
     !razorpay_payment_id ||
