@@ -1,4 +1,4 @@
-const BASE_URL = "https://ed-tech-backend-kn0l.onrender.com/api/v1";
+const BASE_URL = "http://localhost:3000/api/v1";
 
 // AUTH ENDPOINTS
 export const endpoints = {
