@@ -24,7 +24,7 @@ exports.resetPasswordToken = async (req, res) => {
       { new: true }
     );
 
-    const url = `http://localhost:3001/update-password/${token}`;
+    const url = `https://skillsync-0ash.onrender.com/update-password/${token}`;
 
     await mailSender(
       email,
