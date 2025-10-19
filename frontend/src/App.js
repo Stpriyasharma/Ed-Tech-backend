@@ -78,15 +78,7 @@ function App() {
           }
         />
 
-        <Route
-          path="update-password/:id"
-          element={
-            <OpenRoute>
-              <UpdatePassword />
-            </OpenRoute>
-          }
-        />
-
+        <Route path="/update-password/:token" element={<UpdatePassword />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 
